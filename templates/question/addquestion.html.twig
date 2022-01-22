@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exam Page{% endblock %}
+{% block style %}
+<style>
+  .text-color{
+            color:rgb(0, 102, 255);
+        }
+</style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="" role="document">
+        <div class="modal-content">
+            <form method="POST" action="{{ path('addquestion2') }}">
+                <div class="">
+                    <h5 class=" text-color" >Add Questions</h5>
+                </div>
+
+                <div class="">
+                    <div class="row">
+                        <label><strong>Question</strong></label>
+                    </div>
+                    <div class="row">
+                        <input name="question" class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><label><strong>A</strong></label></div>
+                        <div class="col-md-6"><label><strong>B</strong></label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><input name="a" class="form-control"></div>
+                        <div class="col-md-6"><input name="b" class="form-control"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><label><strong>C</strong></label></div>
+                        <div class="col-md-6"><label><strong>D</strong></label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6"><input name="c" class="form-control"></div>
+                        <div class="col-md-6"><input name="d" class="form-control"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label><strong>Answer</strong></label><br />
+                            <select name="ans" class="form-control">
+                                <option Value="a">A</option>
+                                <option Value="b">B</option>
+                                <option Value="c">C</option>
+                                <option Value="d">D</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                   <a href="{{path('home')}}"> <button type="button" class="btn btn-secondary">Back</button></a>
+                    <button type="Submit" class="btn btn-primary" >Add questions</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
