@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Exam Page{% endblock %}
+{% block title %}Exam_Page{% endblock %}
 {% block style %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -9,10 +9,26 @@
 {% endblock %}
 
 {% block body %}
+    <div class="container">
+       <div class="card">
+           <form>
+               <div class="row">
+                   {%for value in values%}
+                       <div><h4>{{value.id}}{{value.ques}}</h4></div>
 
+                       <div>
+                           <input name="answer" value="optionA" type="radio"/>A.{{value.a}}<br/>
+                           <input name="answer" value="optionB" type="radio"/>B.{{value.b}}<br/>
+                           <input name="answer" value="optionC" type="radio"/>C.{{value.c}}<br/>
+                           <input name="answer" value="optionD" type="radio"/>D.{{value.d}}<br/>
+                       </div>
+                   {%endfor%}
+               </div>
+           </form>
+       </div>
+    </div>
     <div>
        <a href="{{path('finishexam')}}"><button class="btn btn-primary">Finish</button></a>
-       <a href="{{path('home')}}"><button class="btn btn-primary">Back</button></a>
     </div>
 
 {% endblock %}

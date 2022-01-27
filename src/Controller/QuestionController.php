@@ -15,25 +15,26 @@ class QuestionController extends AbstractController
      */
     public function home()
     {
-        $users = ['a','b','c','d'];
-        return $this->render('question/home.html.twig',[
-            'users' => $users,
-        ]);
+
+        return $this->render('question/home.html.twig');
     }
     /**
      * @Route("/startexam", name="startexam")
      */
     public function startexam()
     {
-        $users = ['a','b','c','d'];
         return $this->render('question/startexam.html.twig');
     }
     /**
      * @Route("/exampage", name="exampage")
      */
-    public function exampage()
+    public function exampage(EntityManagerInterface $entitymanager)
     {
-        return $this->render('question/exampage.html.twig');
+        $questions = $entitymanager->getRepository(Questions::class)->findAll();
+        return $this->render('question/exampage.html.twig',[
+        'values'=>$questions,
+        ]);
+        
     }
     /**
      * @Route("/finishexam", name="finishexam")
@@ -45,9 +46,12 @@ class QuestionController extends AbstractController
     /**
      * @Route("/questionpage", name="questionpage")
      */
-    public function questionpage()
+    public function questionpage(EntityManagerInterface $entitymanager)
     {
-        return $this->render('question/questionpage.html.twig');
+        $questions = $entitymanager->getRepository(Questions::class)->findAll();
+        return $this->render('question/questionpage.html.twig',[
+        'values'=>$questions,
+        ]);
     }
     /**
      * @Route("/addquestion", name="addquestion")
@@ -82,10 +86,40 @@ class QuestionController extends AbstractController
         return $this->redirectToRoute('addquestion');
     }
     /**
-     * @Route("/editpage", name="editpage")
+     * @Route("/editpage/{id}", name="editpage")
      */
-    public function editpage()
+    public function editpage(EntityManagerInterface $entityManager ,$id)
     {
-        return $this->render('question/editpage.html.twig');
+        $questions = $entityManager->getRepository(Questions::class)->findOneBy(['id'=>$id]);
+        return $this->render('question/editpage.html.twig',[
+        'question'=>$questions,
+        ]);
     }
+    /**
+     * @Route("/update/{id}", name="update", methods="POST")
+     */
+    public function update(EntityManagerInterface $entityManager ,Request $request,$id)
+    {
+        $questionName =$request->get('question');
+        $a =$request->get('a');
+        $b =$request->get('b');
+        $c =$request->get('c');
+        $d =$request->get('d');
+        $ans =$request->get('ans');
+//dd($questionName);
+
+        $questions = $entityManager->getRepository(Questions::class)->findOneBy(['id'=>$id]);
+        $questions->setQues($questionName);
+        $questions->setA($a);
+        $questions->setB($b);
+        $questions->setC($c);
+        $questions->setD($d);
+        $questions->setAns($ans);
+        
+        //$entityManager->persist($questions);
+        $entityManager->flush();
+        
+        return $this->redirectToRoute('questionpage');
+    }
+
 }

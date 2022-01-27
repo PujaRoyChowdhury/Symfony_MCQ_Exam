@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Exam Page{% endblock %}
+{% block title %}Edit_Question_Page{% endblock %}
 {% block style %}
 <style>
   .text-color{
@@ -12,10 +12,10 @@
 {% block body %}
 
     <div class="" role="document">
-        <div class="modal-content">
-            <form method="POST" action="/add">
+        <div >
+            <form method="POST" action="{{ path('update',{id:question.id}) }}">
                 <div class="">
-                    <h5 class=" text-color" >Add Questions</h5>
+                    <h5 class=" text-color" >Edit Questions</h5>
                 </div>
 
                 <div class="">
@@ -23,23 +23,23 @@
                         <label><strong>Question</strong></label>
                     </div>
                     <div class="row">
-                        <input name="question" class="form-control">
+                        <textarea name="question" class="form-control" >{{question.ques}}</textarea>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><label><strong>A</strong></label></div>
                         <div class="col-md-6"><label><strong>B</strong></label></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><input name="opa" class="form-control"></div>
-                        <div class="col-md-6"><input name="opb" class="form-control"></div>
+                        <div class="col-md-6"><input name="a" class="form-control" value={{question.a}}></div>
+                        <div class="col-md-6"><input name="b" class="form-control" value={{question.b}}></div>
                     </div>
                     <div class="row">
                         <div class="col-md-6"><label><strong>C</strong></label></div>
                         <div class="col-md-6"><label><strong>D</strong></label></div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"><input name="opc" class="form-control"></div>
-                        <div class="col-md-6"><input name="opd" class="form-control"></div>
+                        <div class="col-md-6"><input name="c" class="form-control" value={{question.c}}></div>
+                        <div class="col-md-6"><input name="d" class="form-control" value={{question.d}}></div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -53,9 +53,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <a href="{{path('home')}}"> <button type="button" class="btn btn-secondary">Back</button></a>
-                    <button type="Submit" class="btn btn-primary" >Add questions</button>
+                <div>
+                   <a href="{{path('home')}}"> <button type="button" class="btn btn-secondary">Back</button></a>
+                    <button type="Submit" class="btn btn-primary" >Edit questions</button>
                 </div>
             </form>
         </div>

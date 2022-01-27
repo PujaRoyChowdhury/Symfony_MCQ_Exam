@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Exam Page{% endblock %}
+{% block title %}Question_Show_Page{% endblock %}
 {% block style %}
 <style>
     <style>
@@ -41,11 +41,13 @@
                     </thead>
                     <tbody>
                         <tr>
+                        {% for value in values %}}
+                            <td>{{value.ques}}</td>
                             <td></td>
-                            <td></td>
-                            <td><a href="{{path('editpage')}}"><button class="btn btn-success">Edit</button></a>
-                                <a href="{{path('home')}}"><button class="btn btn-danger">Back</button></a>
+                            <td><a href="{{path('editpage',{id:value.id})}}"><button class="btn btn-success">Edit</button></a>
+                                <a href="{{path('home',{id:value.id})}}"><button class="btn btn-danger">Back</button></a>
                             </td>
+                        {%endfor%}
                         </tr>
                     </tbody>
                 </table>
