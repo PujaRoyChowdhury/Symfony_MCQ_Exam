@@ -12,7 +12,6 @@
 {% endblock %}
 
 {% block body %}
-
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
@@ -40,15 +39,17 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
+                        {% for value in values %}
                         <tr>
-                        {% for value in values %}}
+                            <td>{{value.id}}</td>
                             <td>{{value.ques}}</td>
-                            <td></td>
                             <td><a href="{{path('editpage',{id:value.id})}}"><button class="btn btn-success">Edit</button></a>
-                                <a href="{{path('home',{id:value.id})}}"><button class="btn btn-danger">Back</button></a>
+                                <a href="{{path('delete',{id:value.id})}}"><button class="btn btn-danger">Delete</button></a>
                             </td>
-                        {%endfor%}
-                        </tr>
+                            </tr>
+                        {% endfor %}
+                        
                     </tbody>
                 </table>
             </div>

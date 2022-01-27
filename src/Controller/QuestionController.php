@@ -122,4 +122,16 @@ class QuestionController extends AbstractController
         return $this->redirectToRoute('questionpage');
     }
 
+    /**
+     * @Route("/delete/{id}", name="delete")
+     */
+    public function delete( EntityManagerInterface $entityManager ,$id)
+    {
+        $question = $entityManager->getRepository(Questions::class)->findOneBy(['id'=>$id]);
+        $entityManager->remove($question);
+        $entityManager->flush();
+        //return  Response('hello world');
+        return $this->redirectToRoute('questionpage');
+    }
+
 }
