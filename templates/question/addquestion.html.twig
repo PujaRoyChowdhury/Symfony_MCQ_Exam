@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Add_Question_Page{% endblock %}
+
 {% block style %}
-<style>
-  .text-color{
-            color:rgb(0, 102, 255);
+    <style>
+        .text-color{
+            color: blue;
         }
-</style>
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -15,14 +16,14 @@
         <div class="modal-content">
             <form method="POST" action="{{ path('addquestion2') }}">
                 <div class="">
-                    <h5 class=" text-color" >Add Questions</h5>
+                    <h5 class="text-color"><strong>Add Questions</strong></h5>
                 </div>
 
-                <div class="">
+                <div class="form-control">
                     <div class="row">
                         <label><strong>Question</strong></label>
                     </div>
-                    <div class="row">
+                    <div class="row ">
                         <input name="question" class="form-control">
                     </div>
                     <div class="row">

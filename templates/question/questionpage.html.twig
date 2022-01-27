@@ -1,31 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Question_Show_Page{% endblock %}
+
 {% block style %}
-<style>
     <style>
-        .text-color {
-            color: rgb(0, 102, 255);
+        .text-color{
+            color: blue;
+        }
+        .size{
+           margin: 50px;
+           padding:90px:
         }
     </style>
-</style>
 {% endblock %}
 
 {% block body %}
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-9">
-                            <h3 class="mb-4 text-color">Questions<b></b></h3>
+                <div class="table-title ">
+                    <div class="row ">
+                        <div class="col-sm-9 ">
+                            <h3 class="mb-4 text-color size"><strong>Questions</strong></h3>
                         </div>
                         <div class="col-sm-3">
                             <div class="float-right">
-                                <a href="{{path('addquestion')}}"><Button data-toggle="modal" 
-                                        class="btn btn-primary">Add Question</Button></a>
-                                <a href="{{path('home')}}"> <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Back</button></a>
+                                <a href="{{path('addquestion')}}"><Button class="btn btn-primary">Add Question</Button></a>
+                                <a href="{{path('home')}}"> <button type="button" class="btn btn-secondary">Back</button></a>
                             </div>
                         </div>
                     </div>
@@ -39,21 +40,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        {% for value in values %}
+                        {% for question in questions %}
                         <tr>
-                            <td>{{value.id}}</td>
-                            <td>{{value.ques}}</td>
-                            <td><a href="{{path('editpage',{id:value.id})}}"><button class="btn btn-success">Edit</button></a>
-                                <a href="{{path('delete',{id:value.id})}}"><button class="btn btn-danger">Delete</button></a>
+                            <td>{{question.id}}</td>
+                            <td>{{question.ques}}</td>
+                            <td><a href="{{path('editpage',{id:question.id})}}"><button class="btn btn-success">Edit</button></a>
+                                <a href="{{path('delete',{id:question.id})}}"><button class="btn btn-danger">Delete</button></a>
                             </td>
                             </tr>
-                        {% endfor %}
-                        
+                        {% endfor %}      
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 {% endblock %}

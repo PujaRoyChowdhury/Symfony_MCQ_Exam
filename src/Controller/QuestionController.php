@@ -46,11 +46,11 @@ class QuestionController extends AbstractController
     /**
      * @Route("/questionpage", name="questionpage")
      */
-    public function questionpage(EntityManagerInterface $entitymanager)
+    public function questionpage(EntityManagerInterface $entityManager)
     {
-        $questions = $entitymanager->getRepository(Questions::class)->findAll();
+        $questions = $entityManager->getRepository(Questions::class)->findAll();
         return $this->render('question/questionpage.html.twig',[
-        'values'=>$questions,
+        'questions'=>$questions,
         ]);
     }
     /**
@@ -83,6 +83,8 @@ class QuestionController extends AbstractController
         $entityManager->persist($questions);
         $entityManager->flush();
         
+        //$this->addFlash('success','Question is added successfully.');
+
         return $this->redirectToRoute('addquestion');
     }
     /**
