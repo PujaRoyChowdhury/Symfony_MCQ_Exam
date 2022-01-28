@@ -10,24 +10,20 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class QuestionController extends AbstractController
 {
-    /**
-     * @Route("/", name="home")
-     */
+    
+    #[Route('/', name: 'home')]
     public function home()
     {
-
         return $this->render('question/home.html.twig');
     }
-    /**
-     * @Route("/startexam", name="startexam")
-     */
+
+    #[Route('/startexam', name: 'startexam')]
     public function startexam()
     {
         return $this->render('question/startexam.html.twig');
     }
-    /**
-     * @Route("/exampage", name="exampage")
-     */
+
+    #[Route('/exampage', name: 'exampage')]
     public function exampage(EntityManagerInterface $entitymanager)
     {
         $questions = $entitymanager->getRepository(Questions::class)->findAll();
@@ -36,16 +32,14 @@ class QuestionController extends AbstractController
         ]);
         
     }
-    /**
-     * @Route("/finishexam", name="finishexam")
-     */
+    
+    #[Route('/finishexam', name: 'finishexam')]
     public function finishexam()
     {
         return $this->render('question/finishexam.html.twig');
     }
-    /**
-     * @Route("/questionpage", name="questionpage")
-     */
+    
+    #[Route('/questionpage', name: 'questionpage')]
     public function questionpage(EntityManagerInterface $entityManager)
     {
         $questions = $entityManager->getRepository(Questions::class)->findAll();
@@ -53,9 +47,8 @@ class QuestionController extends AbstractController
         'questions'=>$questions,
         ]);
     }
-    /**
-     * @Route("/addquestion", name="addquestion")
-     */
+    
+    #[Route('/addquestion', name: 'addquestion')]
     public function addquestion()
     {
         return $this->render('question/addquestion.html.twig');
@@ -63,6 +56,7 @@ class QuestionController extends AbstractController
     /**
      * @Route("/addquestion2", name="addquestion2" , methods="POST")
      */
+    // #[Route('/addquestion2', name: 'addquestion2', methods="POST")]
     public function addquestion2(EntityManagerInterface $entityManager ,Request $request)
     {
         $questions = new Questions();
@@ -87,9 +81,8 @@ class QuestionController extends AbstractController
 
         return $this->redirectToRoute('addquestion');
     }
-    /**
-     * @Route("/editpage/{id}", name="editpage")
-     */
+    
+    #[Route('/editpage/{id}', name: 'editpage')]
     public function editpage(EntityManagerInterface $entityManager ,$id)
     {
         $questions = $entityManager->getRepository(Questions::class)->findOneBy(['id'=>$id]);
@@ -108,7 +101,6 @@ class QuestionController extends AbstractController
         $c =$request->get('c');
         $d =$request->get('d');
         $ans =$request->get('ans');
-//dd($questionName);
 
         $questions = $entityManager->getRepository(Questions::class)->findOneBy(['id'=>$id]);
         $questions->setQues($questionName);
@@ -117,22 +109,17 @@ class QuestionController extends AbstractController
         $questions->setC($c);
         $questions->setD($d);
         $questions->setAns($ans);
-        
-        //$entityManager->persist($questions);
-        $entityManager->flush();
-        
+
+        $entityManager->flush(); 
         return $this->redirectToRoute('questionpage');
     }
 
-    /**
-     * @Route("/delete/{id}", name="delete")
-     */
+    #[Route('/delete/{id}', name: 'delete')]
     public function delete( EntityManagerInterface $entityManager ,$id)
     {
         $question = $entityManager->getRepository(Questions::class)->findOneBy(['id'=>$id]);
         $entityManager->remove($question);
         $entityManager->flush();
-        //return  Response('hello world');
         return $this->redirectToRoute('questionpage');
     }
 }
