@@ -1,35 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Finish_Exam_Page{% endblock %}
-{% block style %}
-<style>
-    .card-size {
-            width: 400px;
-            height: 300px;
-            text-align: center;
-            padding: 50px;
-            margin: 150px 350px ;
-        }
-        .text-color{
-            color:rgb(0, 102, 255);
-        }
-        .button-margin{
-            margin-top: 50px;
-        }
-</style>
-{% endblock %}
 
 {% block body %}
-
-<div class="container">
-    <div class="card card-size">
-        <div class="card-body">
-            <label><strong> Correct : </strong>1</label>
-            <label><strong>Incorrect :</strong> 1</label>
-            <label><strong>Result :</strong> 2/5</label><br/>
-            <a href="/"><button class="btn btn-primary button-margin">Finish Quiz</button></a>
+<div class = "container">
+    <div class = "card my-4 mx-4">
+        <div class = "card-body text-center">
+            <label><strong> Correct : </strong></label></br>
+            <label><strong>Incorrect :</strong></label></br>
+            <label><strong>Result :</strong></label><br/>
+            <a href="{{path('home')}}"><button class="btn btn-primary my-2 mx-2">Finish Quiz</button></a>
         </div>
     </div>
 </div>
-
 {% endblock %}

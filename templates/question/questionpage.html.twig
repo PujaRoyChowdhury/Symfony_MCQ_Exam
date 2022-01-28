@@ -2,18 +2,6 @@
 
 {% block title %}Question_Show_Page{% endblock %}
 
-{% block style %}
-    <style>
-        .text-color{
-            color: blue;
-        }
-        .size{
-           margin: 50px;
-           padding:90px:
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
     <div class="container-xl">
         <div class="table-responsive">
@@ -21,9 +9,9 @@
                 <div class="table-title ">
                     <div class="row ">
                         <div class="col-sm-9 ">
-                            <h3 class="mb-4 text-color size"><strong>Questions</strong></h3>
+                            <h3 class="my-4 text-primary"><strong>Questions</strong></h3>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-3 my-4">
                             <div class="float-right">
                                 <a href="{{path('addquestion')}}"><Button class="btn btn-primary">Add Question</Button></a>
                                 <a href="{{path('home')}}"> <button type="button" class="btn btn-secondary">Back</button></a>

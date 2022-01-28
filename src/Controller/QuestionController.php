@@ -135,5 +135,4 @@ class QuestionController extends AbstractController
         //return  Response('hello world');
         return $this->redirectToRoute('questionpage');
     }
-
 }

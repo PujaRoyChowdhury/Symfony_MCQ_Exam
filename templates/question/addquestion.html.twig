@@ -2,47 +2,39 @@
 
 {% block title %}Add_Question_Page{% endblock %}
 
-{% block style %}
-    <style>
-        .text-color{
-            color: blue;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
 
     <div class="" role="document">
-        <div class="modal-content">
+        <div class="">
             <form method="POST" action="{{ path('addquestion2') }}">
-                <div class="">
-                    <h5 class="text-color"><strong>Add Questions</strong></h5>
+                <div class="my-4 mx-4">
+                    <h3 class="text-primary"><strong>Add Questions</strong></h3>
                 </div>
 
                 <div class="form-control">
-                    <div class="row">
+                    <div class="row my-2 mx-2">
                         <label><strong>Question</strong></label>
                     </div>
-                    <div class="row ">
+                    <div class="row my-2 mx-2">
                         <input name="question" class="form-control">
                     </div>
-                    <div class="row">
+                    <div class="row my-2 mx-2">
                         <div class="col-md-6"><label><strong>A</strong></label></div>
                         <div class="col-md-6"><label><strong>B</strong></label></div>
                     </div>
-                    <div class="row">
+                    <div class="row my-2 mx-2">
                         <div class="col-md-6"><input name="a" class="form-control"></div>
                         <div class="col-md-6"><input name="b" class="form-control"></div>
                     </div>
-                    <div class="row">
+                    <div class="row my-2 mx-2">
                         <div class="col-md-6"><label><strong>C</strong></label></div>
                         <div class="col-md-6"><label><strong>D</strong></label></div>
                     </div>
-                    <div class="row">
+                    <div class="row my-2 mx-2">
                         <div class="col-md-6"><input name="c" class="form-control"></div>
                         <div class="col-md-6"><input name="d" class="form-control"></div>
                     </div>
-                    <div class="row">
+                    <div class="row my-2 mx-2">
                         <div class="col-md-3">
                             <label><strong>Answer</strong></label><br />
                             <select name="ans" class="form-control">
@@ -55,8 +47,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                   <a href="{{path('home')}}"> <button type="button" class="btn btn-secondary">Back</button></a>
                     <button type="Submit" class="btn btn-primary" >Add questions</button>
+                    <a href="{{path('home')}}"> <button type="button" class="btn btn-secondary">Back</button></a>
                 </div>
             </form>
         </div>

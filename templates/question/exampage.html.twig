@@ -1,34 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Exam_Page{% endblock %}
-{% block style %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-{% endblock %}
 
 {% block body %}
     <div class="container">
-       <div class="card">
-           <form>
-               <div class="row">
-                   {%for value in values%}
-                       <div><h4>{{value.id}}{{value.ques}}</h4></div>
-
-                       <div>
-                           <input name="answer" value="optionA" type="radio"/>A.{{value.a}}<br/>
-                           <input name="answer" value="optionB" type="radio"/>B.{{value.b}}<br/>
-                           <input name="answer" value="optionC" type="radio"/>C.{{value.c}}<br/>
-                           <input name="answer" value="optionD" type="radio"/>D.{{value.d}}<br/>
-                       </div>
-                   {%endfor%}
-               </div>
-           </form>
-       </div>
-    </div>
-    <div>
-       <a href="{{path('finishexam')}}"><button class="btn btn-primary">Finish</button></a>
-    </div>
-
+        <div class="card">
+            <form action="{{path('result')}}" methods="POST">
+                <div class="row my-2">
+                    {%for value in values%}
+                        <div><h4># {{value.ques}}</h4></div>
+                        <div class="mx-2 my-2">
+                           <input name="ques[{{ value.id }}]" value="{{value.a}}" type="radio"/>A.{{value.a}}<br/>
+                           <input name="ques[{{ value.id }}]" value="{{value.b}}" type="radio"/>B.{{value.b}}<br/>
+                           <input name="ques[{{ value.id }}]" value="{{value.c}}" type="radio"/>C.{{value.c}}<br/>
+                           <input name="ques[{{ value.id }}]" value="{{value.d}}" type="radio"/>D.{{value.d}}<br/>
+                        </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+        <button class="btn btn-primary mx-2 my-2">Finish</button>
+        </div>
+        </form>
 {% endblock %}
