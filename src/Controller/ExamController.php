@@ -17,16 +17,6 @@ class ExamController extends AbstractController
         $questions = $entityManager->getRepository(Questions::class)->findAll();
         $fetchedAnswer = $request->get('ques');
         $count=0;
-        foreach($questions as $question)
-        {
-            foreach($fetchedAnswer as $answer)
-            {
-                if($question->getAns() === $answer)
-                {
-                    $count++;
-                }
-            }
-        }
-        dd($count);
+
     }
 }
